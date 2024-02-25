@@ -1,7 +1,0 @@
-rest_url: "https://rest.getbze.com"
-rpc_url: "rpc.getbze.com"
-discord:
-  webhook: https://discord.com/api/webhooks/1211082551641514005/pn3Q_U1mUq8xylFdxTYl5pkrOISJvGrsnDMgCa1POK-YZBl5DoSDbT6ilKEmh8I5fT10
-history:
-  filename: history.json
-  filepath: ./
