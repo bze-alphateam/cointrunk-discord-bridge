@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 type Discord struct {
@@ -22,9 +23,24 @@ func NewDiscordConfig() Discord {
 }
 
 func (d Discord) Validate() error {
-	if len(d.Webhook) == 0 {
+	if len(d.GetWebhooks()) == 0 {
 		return fmt.Errorf("invalid discord webhook")
 	}
 
 	return nil
+}
+
+func (d Discord) GetWebhooks() []string {
+	split := strings.Split(d.Webhook, ",")
+	var webhooks []string
+	for _, s := range split {
+		normalized := strings.TrimSpace(s)
+		if len(normalized) < 60 {
+			continue
+		}
+
+		webhooks = append(webhooks, normalized)
+	}
+
+	return webhooks
 }

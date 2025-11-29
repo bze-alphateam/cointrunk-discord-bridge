@@ -1,12 +1,13 @@
 package cmd
 
 import (
+	"log"
+
 	"github.com/bze-alphateam/cointrunk-discord-bridge/app/command"
 	"github.com/bze-alphateam/cointrunk-discord-bridge/app/factory"
 	"github.com/bze-alphateam/cointrunk-discord-bridge/app/repository"
 	"github.com/bze-alphateam/cointrunk-discord-bridge/app/service"
 	"github.com/spf13/cobra"
-	"log"
 )
 
 var articleBotCmd = &cobra.Command{
@@ -39,7 +40,7 @@ var articleBotCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		webhook, err := service.NewDiscordWebhook(appCfg.Discord.Webhook)
+		webhook, err := service.NewDiscordWebhooksPool(appCfg.Discord.GetWebhooks())
 		if err != nil {
 			log.Fatal(err)
 		}
