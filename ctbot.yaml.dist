@@ -1,7 +1,11 @@
 rest_url: "https://rest.getbze.com"
 rpc_url: "rpc.getbze.com"
 discord:
-  webhook: DISCORD_WEBHOOK_HERE
+    webhook: DISCORD_WEBHOOK_HERE
+    role_changer_token: DISCORD_ROLE_CHANGER_TOKEN_HERE
+    app_id: DISCORD_APP_ID_HERE
+    guild_id: DISCORD_GUILD_ID_HERE
+    role_id: DISCORD_ROLE_ID_HERE
 history:
   filename: history.json
   filepath: ./

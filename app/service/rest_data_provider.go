@@ -3,14 +3,15 @@ package service
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/bze-alphateam/cointrunk-discord-bridge/app/dto"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/bze-alphateam/cointrunk-discord-bridge/app/dto"
 )
 
 const (
-	articleUrl   = "/bze/cointrunk/v1/articles?pagination.count_total=false&pagination.limit=50&pagination.reverse=true"
-	publisherUrl = "/bze/cointrunk/v1/publisher/%s"
+	articleUrl   = "/bze/cointrunk/all_articles?pagination.count_total=false&pagination.limit=50&pagination.reverse=true"
+	publisherUrl = "/bze/cointrunk/publisher/%s"
 )
 
 type RestDataProvider struct {

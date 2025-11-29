@@ -2,9 +2,10 @@ package service
 
 import (
 	"fmt"
-	"github.com/gorilla/websocket"
 	"log"
 	"net/url"
+
+	"github.com/gorilla/websocket"
 )
 
 const (
@@ -43,7 +44,7 @@ func (s TendermintService) ListenForArticles(handler MessageHandler) error {
 		"method":  "subscribe",
 		"id":      0,
 		"params": map[string]string{
-			"query": "tm.event = 'Tx' AND message.action='add_article'",
+			"query": "tm.event = 'Tx' AND message.action='/bze.cointrunk.MsgAddArticle'",
 		},
 	})
 	if err != nil {
