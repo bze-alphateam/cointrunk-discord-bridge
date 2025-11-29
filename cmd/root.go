@@ -2,13 +2,14 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/bze-alphateam/cointrunk-discord-bridge/config"
-	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/bze-alphateam/cointrunk-discord-bridge/config"
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var appCfg = &config.App{}
@@ -25,6 +26,7 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(articleBotCmd)
+	rootCmd.AddCommand(roleChangerCmd)
 }
 
 func initConfig() {
@@ -41,6 +43,10 @@ func initConfig() {
 	//odd bug ? or something... to avoid wasting time studying unmarshal and viper use this workaround
 	appCfg.RestUrl = viper.GetString("rest_url")
 	appCfg.RpcUrl = viper.GetString("rpc_url")
+	appCfg.Discord.RoleChangerToken = viper.GetString("discord.role_changer_token")
+	appCfg.Discord.AppID = viper.GetString("discord.app_id")
+	appCfg.Discord.GuildID = viper.GetString("discord.guild_id")
+	appCfg.Discord.RoleID = viper.GetString("discord.role_id")
 	if err != nil {
 		log.Fatalf("Unable to unmarshal config into struct, %v", err)
 	}
